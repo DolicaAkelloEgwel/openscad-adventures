@@ -11,11 +11,11 @@ finger_y_translation = (inner_y * 0.5) + thickness;
 finger_x_translation = (inner_x * 0.5) + thickness;
 finger_z_translation = -5;
 
-finger_slot_height = inner_z + thickness + 10;
-
 outer_x = inner_x + (thickness * 2);
 outer_y = inner_y + (thickness * 2);
 outer_z = inner_z + thickness;
+
+finger_slot_height = outer_z + 10;
 
 finger_small_radius = 15;
 finger_large_radius = 20;
@@ -26,15 +26,19 @@ difference() {
     translate([thickness, thickness, thickness])
     cube([inner_x, inner_y, inner_z + 1]);
 
+    // left slot
     translate([0, finger_y_translation, finger_z_translation])
     cylinder(h=finger_slot_height, r1=finger_small_radius, r2=finger_large_radius);
 
+    // right slot
     translate([outer_x, finger_y_translation, finger_z_translation])
     cylinder(h=finger_slot_height, r1=finger_small_radius, r2=finger_large_radius);
     
-    translate([finger_x_translation, thickness, finger_z_translation])
+    // bottom slot
+    translate([finger_x_translation, 0, finger_z_translation])
     cylinder(h=finger_slot_height, r1=finger_small_radius, r2=finger_large_radius);
 
+    // top slot
     translate([finger_x_translation, outer_y, finger_z_translation])
     cylinder(h=finger_slot_height, r1=finger_small_radius, r2=finger_large_radius);
 }
