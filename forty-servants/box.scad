@@ -11,7 +11,7 @@ tolerance = 0.7;
 
 inner_x = card_x + tolerance;
 inner_y = card_y + tolerance;
-inner_z = ceil(card_z * 0.1) * 10;
+inner_z = ceil(card_z * 0.1) * 10; // round up to nearest cm
 
 echo(inner_z);
 
